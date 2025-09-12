@@ -1,73 +1,81 @@
-# Welcome to your Lovable project
+# Kaya AI - Career Navigator
 
-## Project info
+An AI-powered resume analysis tool that provides personalized feedback and recommendations.
 
-**URL**: https://lovable.dev/projects/0988dcfd-783c-4b50-935b-28b681330404
+## Project Structure
 
-## How can I edit this code?
+```
+├── backend/           # Python Streamlit backend
+│   ├── main.py       # Main Streamlit application
+│   └── requirements.txt
+└── frontend/         # React frontend (Alternative UI)
+    ├── src/          # React source code
+    ├── public/       # Static assets
+    └── ...           # React configuration files
+```
 
-There are several ways of editing your application.
+## Backend (Python/Streamlit)
 
-**Use Lovable**
+### Installation
+```bash
+cd backend
+pip install -r requirements.txt
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/0988dcfd-783c-4b50-935b-28b681330404) and start prompting.
+### Running the Backend
+```bash
+cd backend
+streamlit run main.py
+```
 
-Changes made via Lovable will be committed automatically to this repo.
+The Streamlit app will be available at `http://localhost:8501`
 
-**Use your preferred IDE**
+### Features
+- Multi-AI resume analysis using Gemini, OpenRouter, and Mistral APIs
+- PDF and DOCX resume parsing
+- Company and role-specific optimization
+- Detailed scoring and recommendations
+- Test resume builder
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## Frontend (React)
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
+```bash
+cd frontend
+npm install
+```
 
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Running the Frontend
+```bash
+cd frontend
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The React app will be available at `http://localhost:5173`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Features
+- Modern React-based UI
+- Responsive design with Tailwind CSS
+- TypeScript support
+- Component-based architecture
 
-**Use GitHub Codespaces**
+## API Keys
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The application uses the following AI services:
+- Google Gemini API
+- OpenRouter API  
+- Mistral API
 
-## What technologies are used for this project?
+API keys are currently hardcoded for demo purposes. In production, these should be stored as environment variables.
 
-This project is built with:
+## Usage
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+1. Select your target company and job role
+2. Upload your resume (PDF or DOCX) or create a test resume
+3. Wait for AI analysis to complete
+4. Review your score, gaps, and personalized recommendations
+5. Download the detailed analysis report
 
-## How can I deploy this project?
+## License
 
-Simply open [Lovable](https://lovable.dev/projects/0988dcfd-783c-4b50-935b-28b681330404) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is for educational and demonstration purposes.
