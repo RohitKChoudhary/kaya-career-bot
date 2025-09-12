@@ -5,16 +5,18 @@ An AI-powered resume analysis tool that provides personalized feedback and recom
 ## Project Structure
 
 ```
-├── backend/           # Python Streamlit backend
-│   ├── main.py       # Main Streamlit application
-│   └── requirements.txt
-└── frontend/         # React frontend (Alternative UI)
-    ├── src/          # React source code
-    ├── public/       # Static assets
-    └── ...           # React configuration files
+├── backend/              # Python Streamlit backend (Full AI Implementation)
+│   ├── main.py          # Complete Streamlit application with AI analysis
+│   └── requirements.txt # Python dependencies
+├── src/                 # React frontend (Demo/Interface Only)
+│   ├── components/      # React components
+│   ├── pages/           # Page components
+│   └── ...              # React source files
+├── public/              # Static assets
+└── ...                  # React configuration files
 ```
 
-## Backend (Python/Streamlit)
+## Backend (Python/Streamlit) - **RECOMMENDED**
 
 ### Installation
 ```bash
@@ -31,33 +33,32 @@ streamlit run main.py
 The Streamlit app will be available at `http://localhost:8501`
 
 ### Features
-- Multi-AI resume analysis using Gemini, OpenRouter, and Mistral APIs
+- **Complete AI-powered resume analysis** using Gemini, OpenRouter, and Mistral APIs
 - PDF and DOCX resume parsing
 - Company and role-specific optimization
-- Detailed scoring and recommendations
+- Detailed scoring and recommendations  
 - Test resume builder
+- **Full backend logic from original implementation**
 
-## Frontend (React)
+## Frontend (React) - Demo Interface Only
 
 ### Installation
 ```bash
-cd frontend
 npm install
 ```
 
 ### Running the Frontend
 ```bash
-cd frontend
 npm run dev
 ```
 
 The React app will be available at `http://localhost:5173`
 
 ### Features
-- Modern React-based UI
-- Responsive design with Tailwind CSS
+- Modern React-based UI with Tailwind CSS
 - TypeScript support
 - Component-based architecture
+- **Note: This is a demo interface only - for full AI analysis, use the Python backend**
 
 ## API Keys
 
