@@ -15,7 +15,7 @@ export const JOB_ROLES = [
 ];
 
 export const API_KEYS = {
-  gemini: 'AIzaSyAl-612nrGn7RQfIbncgoXvvmT4g6QlYBk',
-  openrouter: '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',
+  gemini: 'AIzaSyCefNZR8x_iRLke1by_IXwuCpFSk6hMijQ',
+  openrouter: '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',
   mistral: 'bX9Vwh3k3WIUJFoVXpNq1J1N8g86Ludk'
 };

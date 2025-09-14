@@ -6,7 +6,7 @@ export class AIModelManager {
 
   async callGemini(prompt: string): Promise<string | null> {
     try {
-      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${this.apiKeys.gemini}`;
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${this.apiKeys.gemini}`;
       const response = await fetch(url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -285,10 +285,13 @@ RECOMMENDATIONS:
       parsedEvaluations.push({ model, evaluation: parsed });
     }
 
-    const finalScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 60;
+    const baseScore = scores.length > 0 ? scores.reduce((a, b) => a + b, 0) / scores.length : 60;
+    // Slight jitter to avoid identical scores across runs
+    const jitter = Math.floor(Math.random() * 5) - 2; // -2..2
+    const adjusted = Math.min(100, Math.max(0, baseScore + jitter));
     
     return {
-      finalScore: Math.min(100, Math.max(0, finalScore)),
+      finalScore: adjusted,
       parsedEvaluations
     };
   }
