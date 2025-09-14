@@ -32,17 +32,17 @@ export class AIModelManager {
     }
   }
 
-  async callOpenRouter(prompt: string, model = "openai/gpt-3.5-turbo"): Promise<string | null> {
+  async callCohere(prompt: string): Promise<string | null> {
     try {
-      const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+      const response = await fetch("https://api.cohere.ai/v1/generate", {
         method: 'POST',
         headers: {
-          "Authorization": `Bearer ${this.apiKeys.openrouter}`,
+          "Authorization": `Bearer ${this.apiKeys.cohere}`,
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          model,
-          messages: [{ role: "user", content: prompt }],
+          model: "command-xlarge-nightly",
+          prompt: prompt,
           max_tokens: 2000,
           temperature: 0.7
         })
@@ -50,11 +50,11 @@ export class AIModelManager {
 
       if (response.ok) {
         const result = await response.json();
-        return result.choices[0].message.content;
+        return result.generations[0].text;
       }
       return null;
     } catch (error) {
-      console.warn('OpenRouter API temporarily unavailable:', error);
+      console.warn('Cohere API temporarily unavailable:', error);
       return null;
     }
   }
@@ -107,7 +107,7 @@ export class ResumeAnalyzer {
     `;
 
     let result = await this.aiManager.callGemini(prompt);
-    if (!result) result = await this.aiManager.callOpenRouter(prompt);
+    if (!result) result = await this.aiManager.callCohere(prompt);
     if (!result) result = await this.aiManager.callMistral(prompt);
     
     return result || this.generateFallbackResume(company, jobRole);
@@ -194,7 +194,7 @@ Experienced ${jobRole} with 5+ years of expertise in cutting-edge technologies. 
     const evaluations = [];
     const models = [
       { name: 'Gemini', func: this.aiManager.callGemini.bind(this.aiManager) },
-      { name: 'OpenRouter', func: this.aiManager.callOpenRouter.bind(this.aiManager) },
+      { name: 'Cohere', func: this.aiManager.callCohere.bind(this.aiManager) },
       { name: 'Mistral', func: this.aiManager.callMistral.bind(this.aiManager) }
     ];
 
